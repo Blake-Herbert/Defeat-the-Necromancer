@@ -5,12 +5,13 @@ Character playerCharacter = new Character("Player", 20);
 playerCharacter.AddAction("Fireball", ActionRepository.Fireball);
 playerCharacter.AddAction("Ice Lance", ActionRepository.LightningBolt);
 
+
 Character nonplayerCharacter = new Character("NPC", 10);
 
 while (playerCharacter.Health > 0 && nonplayerCharacter.Health > 0)
 {
 	string prompt = $"{nonplayerCharacter.Name} Health: {nonplayerCharacter.Health} \n{ playerCharacter.Name}  Health: { playerCharacter.Health}";
-	string[] options = { "Fireball", "Secondary Attack" };
+	string[] options = { "Fireball","Lightning Bolt" };
 	Menu fightMenu = new Menu(prompt, options);
 
 	fightMenu.DisplayOptions();

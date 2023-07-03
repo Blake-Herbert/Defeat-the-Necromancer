@@ -18,6 +18,7 @@ namespace TurnBasedGame
 
         public string Name { get; set; }
         public int Health { get; set; }
+
         public delegate void action(Character actor, Character target);
         public Dictionary<string, action> Action { get; set; }
 
