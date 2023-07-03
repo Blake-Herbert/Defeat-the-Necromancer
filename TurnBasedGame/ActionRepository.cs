@@ -15,31 +15,50 @@ namespace TurnBasedGame
 			Console.ReadKey();
 		}
 
-		public static void Fireball(Character caster, Character target)
+		public static void Fireball(Character actor, Character target)
 		{
-			int attackRoll = caster.Rolld100();
+			DisplayMessage($"{actor.Name} used Fireball!");
+			int attackRoll = actor.Rolld100();
 			if (attackRoll >= 40)
 			{
-				target.Health -= 3;
-				DisplayMessage($"Fireball hit {target.Name} for 3 damage");
+				int attackDamage = 3;
+				target.Health -= attackDamage;
+				DisplayMessage($"It hit {target.Name} for {attackDamage} damage");
 			}
-			else
-			{ DisplayMessage("Fireball missed");}
+			else 
+			{ 
+				DisplayMessage("Fireball missed");
+			}
 		}
 
 
-		public static void LightningBolt(Character caster, Character target)
+		public static void LightningBolt(Character actor, Character target)
 		{
-			int attackRoll = caster.Rolld100();
-			if(attackRoll >= 10)
+			DisplayMessage($"{actor.Name} used Lightning Bolt!");
+			if (actor.Rolld100() >= 10)
 			{
-				target.Health -= 1;
-				DisplayMessage($"Lightning Bolt hit {target.Name} for 1 damage");
+				int attackDamage = 1;
+				target.Health -= attackDamage;
+				 DisplayMessage($"It hit {target.Name} for {attackDamage} damage");
 			}
-			else
+			else 
+			{ 
+				DisplayMessage("Lightning Bolt missed!");
+			}
+		}
+
+		public static void Swipe(Character actor, Character target) 
+		{
+			DisplayMessage($"{actor.Name} used Swipe!");
+			if (actor.Rolld100() >= 50)
 			{
-				Console.Clear();
-				Console.WriteLine($"{attackRoll}.");
+				int attackDamage = 1;
+				target.Health -= attackDamage;
+				DisplayMessage($"Swipe hit {target.Name} for {attackDamage} damage");
+			}
+			else 
+			{ 
+				DisplayMessage($"Swipe missed!");
 			}
 		}
 	}

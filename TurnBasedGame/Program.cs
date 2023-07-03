@@ -7,6 +7,7 @@ playerCharacter.AddAction("Ice Lance", ActionRepository.LightningBolt);
 
 
 Character nonplayerCharacter = new Character("NPC", 10);
+nonplayerCharacter.AddAction("Swipe", ActionRepository.Swipe);
 
 while (playerCharacter.Health > 0 && nonplayerCharacter.Health > 0)
 {
@@ -15,20 +16,28 @@ while (playerCharacter.Health > 0 && nonplayerCharacter.Health > 0)
 	Menu fightMenu = new Menu(prompt, options);
 
 	fightMenu.DisplayOptions();
+
+	//player turn
 	switch (fightMenu.Run())
 	{
 		case 0:
-			var selectedSpell = playerCharacter.Action["Fireball"];
-			selectedSpell(playerCharacter, nonplayerCharacter);
+			var playerSelectedAction = playerCharacter.Action["Fireball"];
+			playerSelectedAction(playerCharacter, nonplayerCharacter);
 			break;
 		case 1:
-			selectedSpell = playerCharacter.Action["Ice Lance"];
-			selectedSpell(playerCharacter, nonplayerCharacter);
+			playerSelectedAction = playerCharacter.Action["Ice Lance"];
+			playerSelectedAction(playerCharacter, nonplayerCharacter);
 			break;
 
 		default:
 			break;
 	}
+
+	//NPC turn
+	var nonplayerSelectedAction = nonplayerCharacter.Action["Swipe"];
+	nonplayerSelectedAction(nonplayerCharacter, playerCharacter);
+
+
 }
 
 Console.Clear();
