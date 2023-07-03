@@ -21,7 +21,7 @@ namespace TurnBasedGame
 			if (attackRoll >= 40)
 			{
 				target.Health -= 3;
-				DisplayMessage($"Fireball hit {target} for 3 damage");
+				DisplayMessage($"Fireball hit {target.Name} for 3 damage");
 			}
 			else
 			{ DisplayMessage("Fireball missed");}
@@ -34,7 +34,7 @@ namespace TurnBasedGame
 			if(attackRoll >= 10)
 			{
 				target.Health -= 1;
-				DisplayMessage("Lightning Bolt hit for 1 damage");
+				DisplayMessage($"Lightning Bolt hit {target.Name} for 1 damage");
 			}
 			else
 			{

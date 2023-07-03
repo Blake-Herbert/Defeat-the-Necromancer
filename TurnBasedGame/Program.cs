@@ -22,7 +22,7 @@ while (playerCharacter.Health > 0 && nonplayerCharacter.Health > 0)
 			break;
 		case 1:
 			selectedSpell = playerCharacter.Action["Ice Lance"];
-			selectedSpell(playerCharacter, playerCharacter);
+			selectedSpell(playerCharacter, nonplayerCharacter);
 			break;
 
 		default:
