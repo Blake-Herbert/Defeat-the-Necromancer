@@ -10,7 +10,6 @@ namespace TurnBasedGame
 	{
 		public static void DisplayMessage(string message)
 		{
-			Console.Clear();
 			Console.WriteLine(message);
 			Console.ReadKey();
 		}

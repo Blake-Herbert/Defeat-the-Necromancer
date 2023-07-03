@@ -15,6 +15,7 @@ namespace TurnBasedGame
         public int SelectedIndex;
         public string[] Options;
         public string Prompt;
+        public string BottomText;
 
         public Menu(string prompt, string[] options)
         {
@@ -42,6 +43,7 @@ namespace TurnBasedGame
 
                 WriteLine($"{currentOption}");
             }
+            WriteLine(BottomText);
             ResetColor();
         }
 

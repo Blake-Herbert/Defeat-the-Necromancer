@@ -21,11 +21,13 @@ while (playerCharacter.Health > 0 && nonplayerCharacter.Health > 0)
 	switch (fightMenu.Run())
 	{
 		case 0:
+			Console.Clear();
 			var playerSelectedAction = playerCharacter.Action["Fireball"];
 			playerSelectedAction(playerCharacter, nonplayerCharacter);
 			break;
 		case 1:
-			playerSelectedAction = playerCharacter.Action["Ice Lance"];
+			Console.Clear();
+			playerSelectedAction = playerCharacter.Action["Lightning Bolt"];
 			playerSelectedAction(playerCharacter, nonplayerCharacter);
 			break;
 
@@ -34,6 +36,7 @@ while (playerCharacter.Health > 0 && nonplayerCharacter.Health > 0)
 	}
 
 	//NPC turn
+	Console.Clear();
 	var nonplayerSelectedAction = nonplayerCharacter.Action["Swipe"];
 	nonplayerSelectedAction(nonplayerCharacter, playerCharacter);
 
