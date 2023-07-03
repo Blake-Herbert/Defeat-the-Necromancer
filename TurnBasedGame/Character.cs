@@ -12,25 +12,27 @@ namespace TurnBasedGame
         {
             Name = name;
             Health = health;
-            Spells = new Dictionary<string, SpellAction>();
+            Action = new Dictionary<string, action>();
         }
 
 
         public string Name { get; set; }
         public int Health { get; set; }
-        public delegate void SpellAction(Character caster, Character target);
-        public Dictionary<string, SpellAction> Spells { get; set; }
+        public delegate void action(Character actor, Character target);
+        public Dictionary<string, action> Action { get; set; }
 
-        public void AddAction(string actionName, SpellAction action)
+        public void AddAction(string actionName, action action)
         {
-            Spells[actionName] = action;
+            Action[actionName] = action;
         }
-
-
-
-
+            
+        public int Rolld100()
+        { 
+            Random roll = new Random();
+            return  roll.Next(1, 100);
+        }
         
-        }
     }
+}
 
 

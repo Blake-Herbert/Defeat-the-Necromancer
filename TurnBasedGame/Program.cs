@@ -1,18 +1,15 @@
 ﻿using TurnBasedGame;
 
-
-
-
 Character playerCharacter = new Character("Player", 20);
 
 playerCharacter.AddAction("Fireball", ActionRepository.Fireball);
-playerCharacter.AddAction("Ice Lance", ActionRepository.IceLance);
+playerCharacter.AddAction("Ice Lance", ActionRepository.LightningBolt);
 
 Character nonplayerCharacter = new Character("NPC", 10);
 
-while(playerCharacter.Health > 0 && nonplayerCharacter.Health > 0)
+while (playerCharacter.Health > 0 && nonplayerCharacter.Health > 0)
 {
-	string prompt = nonplayerCharacter.Name + " Health: " + nonplayerCharacter.Health + "\nPlayer Health: " + playerCharacter.Health;
+	string prompt = $"{nonplayerCharacter.Name} Health: {nonplayerCharacter.Health} \n{ playerCharacter.Name}  Health: { playerCharacter.Health}";
 	string[] options = { "Fireball", "Secondary Attack" };
 	Menu fightMenu = new Menu(prompt, options);
 
@@ -20,11 +17,12 @@ while(playerCharacter.Health > 0 && nonplayerCharacter.Health > 0)
 	switch (fightMenu.Run())
 	{
 		case 0:
-			var selectedSpell = playerCharacter.Spells["Fireball"];
+			var selectedSpell = playerCharacter.Action["Fireball"];
 			selectedSpell(playerCharacter, nonplayerCharacter);
 			break;
 		case 1:
-			selectedSpell = playerCharacter.Spells["Ice Lance"];
+			selectedSpell = playerCharacter.Action["Ice Lance"];
+			selectedSpell(playerCharacter, playerCharacter);
 			break;
 
 		default:
@@ -34,6 +32,9 @@ while(playerCharacter.Health > 0 && nonplayerCharacter.Health > 0)
 
 Console.Clear();
 Console.WriteLine("Fight Over!");
+if (playerCharacter.Health <= 0)
+{ Console.WriteLine("You lose!"); }
+else Console.WriteLine("You win!");
 Console.ReadKey();
 
 

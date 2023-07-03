@@ -10,10 +10,7 @@ using static System.Console;
 
 
 namespace TurnBasedGame
-{
-
-
-    public class Menu
+{       public class Menu
     {
         public int SelectedIndex;
         public string[] Options;
@@ -77,8 +74,7 @@ namespace TurnBasedGame
                     }
                 }
 
-            } while (keyPressed != ConsoleKey.Enter);
-
+            } while (keyPressed != ConsoleKey.Enter); 
             return SelectedIndex;
         }
     }

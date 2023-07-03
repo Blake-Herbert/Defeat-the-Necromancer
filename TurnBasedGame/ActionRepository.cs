@@ -8,31 +8,39 @@ namespace TurnBasedGame
 {
     public static class ActionRepository
 	{
+		public static void DisplayMessage(string message)
+		{
+			Console.Clear();
+			Console.WriteLine(message);
+			Console.ReadKey();
+		}
+
 		public static void Fireball(Character caster, Character target)
 		{
-			Random random = new Random();
-			int attackRoll = random.Next(1, 100);
-			Console.WriteLine("You rolled " +  attackRoll);
-			Console.ReadKey();
+			int attackRoll = caster.Rolld100();
 			if (attackRoll >= 40)
 			{
-				target.Health = target.Health - 3;
-				Console.Clear();
-				Console.WriteLine("Fireball hit for 3 damage");
-				Console.ReadKey();
+				target.Health -= 3;
+				DisplayMessage($"Fireball hit {target} for 3 damage");
+			}
+			else
+			{ DisplayMessage("Fireball missed");}
+		}
+
+
+		public static void LightningBolt(Character caster, Character target)
+		{
+			int attackRoll = caster.Rolld100();
+			if(attackRoll >= 10)
+			{
+				target.Health -= 1;
+				DisplayMessage("Lightning Bolt hit for 1 damage");
 			}
 			else
 			{
 				Console.Clear();
-				Console.WriteLine("Fireball missed");
-				Console.ReadKey();
+				Console.WriteLine($"{attackRoll}.");
 			}
-		}
-
-
-			public static void IceLance(Character caster, Character target)
-		{
-			
 		}
 	}
 }
