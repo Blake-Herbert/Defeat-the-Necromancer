@@ -3,7 +3,7 @@
 Character playerCharacter = new Character("Player", 20);
 
 playerCharacter.AddAction("Fireball", ActionRepository.Fireball);
-playerCharacter.AddAction("Ice Lance", ActionRepository.LightningBolt);
+playerCharacter.AddAction("Lightning Bolt", ActionRepository.LightningBolt);
 
 
 Character nonplayerCharacter = new Character("NPC", 10);
@@ -17,7 +17,7 @@ while (playerCharacter.Health > 0 && nonplayerCharacter.Health > 0)
 
 	fightMenu.DisplayOptions();
 
-	//player turn
+	//Player turn
 	switch (fightMenu.Run())
 	{
 		case 0:
